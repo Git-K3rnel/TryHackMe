@@ -141,6 +141,12 @@ steghide info gum_room.jpg
 
 it needs a password to show the info, just use a blank password and you see a b64.txt file is embedded inside
 
+extract `b64.txt` using steghide :
+
+```bash
+steghide extract -sf gum_room.jpg
+```
+
 decode it :
 
 ```bash
