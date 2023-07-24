@@ -66,7 +66,7 @@ after logging in the page shows a flag and a link to download a private key :
 
 ![afterlogin](https://github.com/Git-K3rnel/TryHackMe/assets/127470407/0b1827cb-001f-4fbe-b764-9264bc7e5a98)
 
-download the private key which for user "john" and change the permission to `600` :
+download the private key which is for user "john" and change the permission to `600` :
 
 ```bash
 chmod 600 john.key
@@ -76,7 +76,7 @@ if you want to directly connect to machine with this private key, it asks for pa
 
 ![ssh](https://github.com/Git-K3rnel/TryHackMe/assets/127470407/ef7b4657-7ef9-4ee4-b766-f339b8a2640d)
 
-so we should use `ssh2john` to brute force the passpharse :
+so we should use `ssh2john` to make a format appropriate for `john` for brute forcing the passpharse :
 
 ```bash
 ssh2john john.key > out.txt
