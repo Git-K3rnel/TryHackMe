@@ -55,7 +55,7 @@ From,
 Agent C
 ```
 
-so we find out that the login password is in the fake picture, let's examin the pictures
+so we find out that the login password is in the fake picture, let's examin the pictures :
 
 we start by examining `cutie.png`
 
