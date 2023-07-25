@@ -12,7 +12,7 @@ nmap -sT -sV 10.10.52.49
 
 ![nmap](https://github.com/Git-K3rnel/TryHackMe/assets/127470407/e056fada-cec3-472c-92f8-e78987ef27cd)
 
-we brows to web server on port `80` :
+we browse to web server on port `80` :
 
 ![firstPage](https://github.com/Git-K3rnel/TryHackMe/assets/127470407/810ff7da-99a0-4ae6-aa56-6c7adaeeb214)
 
