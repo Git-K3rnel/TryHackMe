@@ -71,7 +71,7 @@ use `zip2john` to brute force the password :
 zip2john cutie.png > hash.txt
 ```
 
-and the use it in `john` :
+and the use `john` :
 
 ```bash
 john hash.txt --wordlist=/usr/share/wordlists/rockyou.txt
