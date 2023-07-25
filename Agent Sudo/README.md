@@ -168,7 +168,7 @@ User james may run the following commands on agent-sudo:
     (ALL, !root) /bin/bash
 ```
 
-emmmm!!, now we can use /bin/bash as root but wait, this is suspicious, lets check the sudo version with `sudo -V` :
+emmmm!!, now we can not use /bin/bash as root but wait, this is suspicious, lets check the sudo version with `sudo -V` :
 
 ```bash
 Sudo version 1.8.21p2
