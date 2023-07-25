@@ -4,7 +4,7 @@
 
 ## Enumeration
 
-Let's enumerate the machine with nmap
+Let's enumerate the machine with nmap :
 
 ```bash
 nmap -sT -sV 10.10.52.49
@@ -16,9 +16,9 @@ we brows to web server on port `80` :
 
 ![firstPage](https://github.com/Git-K3rnel/TryHackMe/assets/127470407/810ff7da-99a0-4ae6-aa56-6c7adaeeb214)
 
-we see that the page needs user-agent to access the site and `R` is agent that wrote this message
+we see that the page needs user-agent to access the site and `R` is agent that wrote this message.
 
-we can infere that other agents codenames are like this, try accessing the website with curl command and user agent
+we can infere that other agents codenames are like this, try accessing the website with curl command and user agent.
 
 if we set user-agent to `A` or `B` nothing happens, but setting user-agent as `C` will show a different message :
 
@@ -62,6 +62,7 @@ we start by examining `cutie.png`
 ```bash
 binwalk -e cutie.png --run-as=root
 ```
+
 there is a zip file inside and it is password protected.
 
 use `zip2john` to brute force the password :
@@ -69,6 +70,7 @@ use `zip2john` to brute force the password :
 ```bash
 zip2john cutie.png > hash.txt
 ```
+
 and the use it in `john` :
 
 ```bash
@@ -82,6 +84,7 @@ use this password to open the zip file :
 ```bash
 7za x 8702.zip
 ```
+
 and open the `To_agentR.txt` :
 
 ```text
@@ -151,7 +154,6 @@ Alien autospy site:foxnews.com
 ```
 
 and the first link gives you the anwer `Roswell alien autopsy`.
-
 
 ## Privilege Escalation
 
