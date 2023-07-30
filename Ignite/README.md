@@ -3,6 +3,7 @@
 ![logo](https://github.com/Git-K3rnel/TryHackMe/assets/127470407/bd001816-10a2-47d1-a383-7be389a99ca8)
 
 ## Enumeration
+
 we use nmap to scan the target :
 
 ```bash
@@ -44,6 +45,7 @@ from the original code you need to change afew things :
 ```
 
 the final code should be like this :
+
 ```python
 import requests
 import urllib
@@ -71,6 +73,8 @@ while 1:
         print r.text[0:dup]
 ```
 
+## Getting Shell
+
 now execute it with `python2`, it gives you a `cmd` that you can run command with it, for example `ls` :
 
 ![cmd](https://github.com/Git-K3rnel/TryHackMe/assets/127470407/38c85ca2-99ba-4550-8d9e-c27429a5a6d3)
@@ -95,9 +99,42 @@ after downloading the file on the victim now its time to execute it, first liste
 
 ![bash](https://github.com/Git-K3rnel/TryHackMe/assets/127470407/08309f4c-f1bf-494c-ae17-c607353db37e)
 
+navigate to `/home/www-data` and cat the `flag.txt` file, this is your first flag :
+
+```bash
+cat flag.txt
+6470e394cbf6dab6a91682cc8585059b
+```
+
+## Privilege Escalation
+
+you can do multiple things here for example uploading `Linpeas.sh` on the target but if you remember from the first page of the site where
+
+it showed multiple configuration files in `fuel/application/config` directory, let's explore this directory to find anything interesting :
+
+![dir](https://github.com/Git-K3rnel/TryHackMe/assets/127470407/e3b999aa-57d2-482f-8af1-e9d13a3ac709)
+
+cat the content of `database.php`
+
+![database](https://github.com/Git-K3rnel/TryHackMe/assets/127470407/a2c3f076-3b7f-4195-b1d0-c11800813c11)
 
 
+yes, the root password is here, we just need to switch to `root` account.
 
+but if we use `su root` we get and error saying `su: must be run from a terminal`
 
+so we first need to escalate the terminal, to do this use the code below :
 
+```python
+python3 -c 'import pty;pty.spawn("/bin/bash")'
+```
+now use `su root` and provide the password.
 
+cat the content of `/root/root.txt` :
+
+```bash
+cat /root/root.txt
+b9bbcb33e11b80be759c4e844862482d
+```
+
+this is the end of Ignite challenge :)
