@@ -4,7 +4,7 @@
 
 ## Enumeration
 
-We use nmap to scan the target :
+We use `nmap` to scan the target :
 
 ```bash
 nmap -sT -sV 10.10.128.117
