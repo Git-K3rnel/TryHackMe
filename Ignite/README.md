@@ -98,7 +98,7 @@ and get the file from the victim :
 
 ![wget](https://github.com/Git-K3rnel/TryHackMe/assets/127470407/2edb533f-3dab-4211-bc39-eaa5971276f1)
 
-after downloading the file on the victim now its time to execute it, first listen on your desired port with `nc` like `nc -nvlp 4444` :
+after downloading the file on the victim now it iss time to execute it, first listen on your desired port with `nc` like `nc -nvlp 4444` :
 
 ![bash](https://github.com/Git-K3rnel/TryHackMe/assets/127470407/08309f4c-f1bf-494c-ae17-c607353db37e)
 
