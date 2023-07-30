@@ -4,7 +4,7 @@
 
 ## Enumeration
 
-we use nmap to scan the target :
+We use nmap to scan the target :
 
 ```bash
 nmap -sT -sV 10.10.128.117
@@ -75,7 +75,7 @@ while 1:
 
 ## Getting Shell
 
-now execute it with `python2`, it gives you a `cmd` that you can run command with it, for example `ls` :
+Now execute it with `python2`, it gives you a `cmd` that you can run command with it, for example `ls` :
 
 ![cmd](https://github.com/Git-K3rnel/TryHackMe/assets/127470407/38c85ca2-99ba-4550-8d9e-c27429a5a6d3)
 
@@ -108,7 +108,7 @@ cat flag.txt
 
 ## Privilege Escalation
 
-you can do multiple things here for example uploading `Linpeas.sh` on the target but if you remember from the first page of the site where
+You can do multiple things here for example uploading `Linpeas.sh` on the target but if you remember from the first page of the site where
 
 it showed multiple configuration files in `fuel/application/config` directory, let's explore this directory to find anything interesting :
 
