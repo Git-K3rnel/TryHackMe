@@ -77,14 +77,53 @@ open the image and you see the password :
 
 ![pngFile](https://github.com/Git-K3rnel/TryHackMe/assets/127470407/5f8aced4-05f5-4cf4-a944-86cb4a0642c3)
 
+write it down and check the `aa.jpg` with steghide : 
+
+```bash
+steghide extract -sf aa.jpg
+```
+
+and provide the password you found in the previous image, by doing that you will get the `ss.zip` file , unzip it and there is 2 files
+
+`passwd.txt` and `shado` , open shado and there is a password in it
+
+i first tries to ssh into the machine with user vigilante and this password but it didn't work, so it took me a while to recheck my steps 
+
+another connection to ftp and this time i navigated one directory back :
+
+![ftpuser](https://github.com/Git-K3rnel/TryHackMe/assets/127470407/b343dba7-c3c3-4635-95ef-dc84df604ea5)
+
+and yes there is another user `slade` that the password in `shado` file belongs to him/her
+
+ssh to device using slade and the password found in shado file :
+
+![ssh](https://github.com/Git-K3rnel/TryHackMe/assets/127470407/6c5fc68a-1185-464f-bc4d-154107a0ba02)
 
 
+using `sudo -l` and turns out we can use :
 
+```bash
+(root) PASSWD: /usr/bin/pkexec
+```
+if you run this binary you see the help menue :
 
+![bin](https://github.com/Git-K3rnel/TryHackMe/assets/127470407/e0c0dca0-871f-415d-858f-862be13b67ed)
 
+read the man page of this binary and you will find that you can run any command with this binary as root
 
+so simply use :
 
+```bash
+/usr/bin/pkexec /bin/bash
+```
 
+and you will become root, `cat` the root.txt
+
+```bash
+cat /root/root.txt
+```
+
+and this is how you can finish this matchine. :)
 
 
 
