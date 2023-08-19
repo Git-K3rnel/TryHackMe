@@ -61,7 +61,7 @@ so connect to ftp using `vigilante` and the base58 decoded of the passwrod :
 
 ## Steganography
 
-i downloaded all three files, and the first file for sure is to check `Leave_me_alone.png` image, if you see it with `exiftool` command. you notice it shows `file format error`
+I downloaded all three files, and the first file for sure is to check `Leave_me_alone.png` image, if you see it with `exiftool` command. you notice it shows `file format error`
 
 so i checked it with `hexedit` command to see the file signature :
 
@@ -89,7 +89,7 @@ and provide the password you found in the previous image, by doing that you will
 
 ## Gaining Shell
 
-i first tried to ssh into the machine with user vigilante and this password but it didn't work, so it took me a while to recheck my steps.
+I first tried to ssh into the machine with user vigilante and this password but it didn't work, so it took me a while to recheck my steps.
 
 another connection to ftp and this time i navigated one directory back :
 
@@ -103,7 +103,7 @@ ssh to device using slade and the password found in shado file :
 
 ## Privilege Escalation
 
-using `sudo -l` and turns out we can use :
+Using `sudo -l` and turns out we can use :
 
 ```bash
 (root) PASSWD: /usr/bin/pkexec
