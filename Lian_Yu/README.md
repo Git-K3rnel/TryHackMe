@@ -1,5 +1,9 @@
 # Lian_Yu
-![Uploading c72d580db69a726dfb8da8aa6eaa2f5a.jpeg…]()
 
 
 ## Enumeration
+Let's use nmap to find out which ports are open :
+
+```bash
+nmap -sT -sV 10.10.25.101
+```
