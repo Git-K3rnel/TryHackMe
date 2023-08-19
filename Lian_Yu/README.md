@@ -67,9 +67,15 @@ so i checked it with `hexedit` command to see the file signature :
 
 ![pnghex](https://github.com/Git-K3rnel/TryHackMe/assets/127470407/5108606b-4262-4afb-b924-420597f87481)
 
-as it seemd there is not appropriate header so i tried to edit it , search google with `png magic header` i found one in [https://en.wikipedia.org/wiki/List_of_file_signatures](test)
+as it seemd there is not appropriate header so i tried to edit it , search google with `png magic header` i found one in [Wikipedia](https://en.wikipedia.org/wiki/List_of_file_signatures)
 
+so i edited the hex with `hexeditor` :
 
+![pnghexedit](https://github.com/Git-K3rnel/TryHackMe/assets/127470407/2c681752-7305-4be8-a5a9-f1186a3df0b7)
+
+open the image and you see the password :
+
+![pngFile](https://github.com/Git-K3rnel/TryHackMe/assets/127470407/5f8aced4-05f5-4cf4-a944-86cb4a0642c3)
 
 
 
