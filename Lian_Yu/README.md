@@ -44,16 +44,30 @@ so check the page source :
 
 ![2100Source](https://github.com/Git-K3rnel/TryHackMe/assets/127470407/60450c88-7528-41f7-bacc-98dd95c58a14)
 
-according to ticket
+according to comment on the page we see `.ticket` can be found on this page , after trying several wordlists i used `/usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt` :
+
+```bash
+ffuf -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -u http://10.10.25.101/island/2100/FUZZ.ticket
+```
+
+and i found `green_arrow.ticket` file :
+
+![ticket](https://github.com/Git-K3rnel/TryHackMe/assets/127470407/7c03f0b0-f2dc-40fd-abc2-cb78f0465c20)
+
+i first tried to use this password for FTP connection but it didn't work, after try decoding with several encodings i found it is `base58`
+
+so connect to ftp using `vigilante` and the base58 decode of the passwrod :
+
+![ftp](https://github.com/Git-K3rnel/TryHackMe/assets/127470407/57cc57f4-1340-4ed2-af8d-467d6b6348a5)
 
 
+i downloaded all three files, and the first file for sure is to check `Leave_me_alone.png` image, if you see it with `exiftool` command. you notice it shows file format error
 
+so i checked it with `hexedit` command to see the file signature :
 
+![pnghex](https://github.com/Git-K3rnel/TryHackMe/assets/127470407/5108606b-4262-4afb-b924-420597f87481)
 
-
-
-
-
+as it seemd there is not appropriate header so i tried to edit it , search google with `png magic header` i found one in !(wikipedia)[https://en.wikipedia.org/wiki/List_of_file_signatures]
 
 
 
