@@ -67,7 +67,9 @@ so i checked it with `hexedit` command to see the file signature :
 
 ![pnghex](https://github.com/Git-K3rnel/TryHackMe/assets/127470407/5108606b-4262-4afb-b924-420597f87481)
 
-as it seemd there is not appropriate header so i tried to edit it , search google with `png magic header` i found one in !(wikipedia)[https://en.wikipedia.org/wiki/List_of_file_signatures]
+as it seemd there is not appropriate header so i tried to edit it , search google with `png magic header` i found one in [https://en.wikipedia.org/wiki/List_of_file_signatures](Wikipedia)
+
+[I'm an inline-style link](https://www.google.com)
 
 
 
