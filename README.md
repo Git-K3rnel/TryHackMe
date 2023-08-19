@@ -6,3 +6,4 @@ This repo provides solution to TryHackMe CTFs
 * [Brute It](https://github.com/Git-K3rnel/TryHackMe/blob/main/Brute%20It/README.md)
 * [Agent Sudo](https://github.com/Git-K3rnel/TryHackMe/blob/main/Agent%20Sudo/README.md)
 * [Ignite](https://github.com/Git-K3rnel/TryHackMe/blob/main/Ignite/README.md)
+* [Lian_Yu](https://github.com/Git-K3rnel/TryHackMe/tree/main/Lian_Yu)
