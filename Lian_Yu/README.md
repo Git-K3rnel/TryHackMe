@@ -15,7 +15,7 @@ let's check the web page :
 
 ![webpage](https://github.com/Git-K3rnel/TryHackMe/assets/127470407/61e43eae-f86b-499b-ab84-3645d60a561d)
 
-so, there is nothing here, not in the page source , we try to `FUZZ` the website to find any new directories
+so, there is nothing here, not in the page source , we try to `FUZZ` the website to find any new directories.
 
 using `raft-medium-directories` i found the `island` direcotry :
 
@@ -24,7 +24,6 @@ using `raft-medium-directories` i found the `island` direcotry :
 i checked the page source and found `viglante` :
 
 ![islandSource](https://github.com/Git-K3rnel/TryHackMe/assets/127470407/a2d3a6d9-ce3b-4cf3-b574-5367490c7c1b)
-
 
 this seems to be a username or something, so write it down.
 
@@ -56,20 +55,21 @@ and i found `green_arrow.ticket` file :
 
 i first tried to use this password for FTP connection but it didn't work, after try decoding with several encodings i found it is `base58`
 
-so connect to ftp using `vigilante` and the base58 decode of the passwrod :
+so connect to ftp using `vigilante` and the base58 decoded of the passwrod :
 
 ![ftp](https://github.com/Git-K3rnel/TryHackMe/assets/127470407/57cc57f4-1340-4ed2-af8d-467d6b6348a5)
 
+## Steganography
 
-i downloaded all three files, and the first file for sure is to check `Leave_me_alone.png` image, if you see it with `exiftool` command. you notice it shows file format error
+i downloaded all three files, and the first file for sure is to check `Leave_me_alone.png` image, if you see it with `exiftool` command. you notice it shows `file format error`
 
 so i checked it with `hexedit` command to see the file signature :
 
 ![pnghex](https://github.com/Git-K3rnel/TryHackMe/assets/127470407/5108606b-4262-4afb-b924-420597f87481)
 
-as it seemd there is not appropriate header so i tried to edit it , search google with `png magic header` i found one in [Wikipedia](https://en.wikipedia.org/wiki/List_of_file_signatures)
+it seems there is no appropriate header, so i tried to edit it , search google with `png magic header` i found one in [Wikipedia](https://en.wikipedia.org/wiki/List_of_file_signatures)
 
-so i edited the hex with `hexeditor` :
+so i edited the hex with `hexedit` program :
 
 ![pnghexedit](https://github.com/Git-K3rnel/TryHackMe/assets/127470407/2c681752-7305-4be8-a5a9-f1186a3df0b7)
 
@@ -83,11 +83,13 @@ write it down and check the `aa.jpg` with steghide :
 steghide extract -sf aa.jpg
 ```
 
-and provide the password you found in the previous image, by doing that you will get the `ss.zip` file , unzip it and there is 2 files
+and provide the password you found in the previous image, by doing that you will get the `ss.zip` file , unzip it and there is 2 files :
 
 `passwd.txt` and `shado` , open shado and there is a password in it
 
-i first tries to ssh into the machine with user vigilante and this password but it didn't work, so it took me a while to recheck my steps 
+## Gaining Shell
+
+i first tried to ssh into the machine with user vigilante and this password but it didn't work, so it took me a while to recheck my steps.
 
 another connection to ftp and this time i navigated one directory back :
 
@@ -99,6 +101,7 @@ ssh to device using slade and the password found in shado file :
 
 ![ssh](https://github.com/Git-K3rnel/TryHackMe/assets/127470407/6c5fc68a-1185-464f-bc4d-154107a0ba02)
 
+## Privilege Escalation
 
 using `sudo -l` and turns out we can use :
 
