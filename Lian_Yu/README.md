@@ -28,3 +28,41 @@ i checked the page source and found `viglante` :
 
 this seems to be a username or something, so write it down.
 
+according to one of the questions : `What is the Web Directory you found?` and its hint : `In numbers` i though maybe its directory is in numbers so i used this list : 
+
+`raft-large-directories.txt` to FUZZ the `island` directory :
+
+```bash
+ffuf -w raft-large-directories.txt -u http://10.10.25.101/island/FUZZ
+```
+
+and i found `2100` as the new page :
+
+![2100](https://github.com/Git-K3rnel/TryHackMe/assets/127470407/3cd7f20c-1560-4c16-a038-0115b6130719)
+
+so check the page source :
+
+![2100Source](https://github.com/Git-K3rnel/TryHackMe/assets/127470407/60450c88-7528-41f7-bacc-98dd95c58a14)
+
+according to ticket
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
