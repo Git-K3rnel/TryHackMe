@@ -1,5 +1,7 @@
 # TryHackMe_Challenge
 
+![THMlogo](https://github.com/Git-K3rnel/TryHackMe/assets/127470407/0b5c68a2-95ea-428c-8875-7b59354760a6)
+
 
 This repo provides solution to TryHackMe CTFs
 
